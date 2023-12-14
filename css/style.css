@@ -1,0 +1,32 @@
+* {
+    margin: 0 auto;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+.container {
+width: 1000px;
+height: 200px;
+display: flex;
+align-items: center;
+}
+
+img {
+    max-width: 100%;
+}
+
+.items {
+    position: relative;
+    width: 800px;
+    height: 400px;
+}
+.item {
+    height: 150px;
+    position: relative;
+    display: none;
+}
+
+.item.active {
+    display: block;
+}

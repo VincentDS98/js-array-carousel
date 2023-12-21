@@ -10,17 +10,72 @@ const images = [
 const itemsContainer = document.querySelector('.items')
 
 for(let i = 0;i<images.length;i++){
+    let itemActive = 'item';
 
-    if(i==0) {
-        itemsContainer.innerHTML += `<div class="item active">
-        <img src="${images[i]}" alt="">
-    </div>`;
-
+    if(i == 0) {
+        itemActive += 'active';
+        
     }
     
-    else {
-    itemsContainer.innerHTML += `<div class="item">
-    <img src="${images[i]}" alt="">
-</div>`;
-    }
+   
+    itemsContainer.innerHTML += `
+    <div class="${itemActive}">
+        <img src="${images[i]}" alt="">
+    </div>`;
+    
 }
+
+
+const prevButton = document.querySelector('.prev');
+
+const prevButton = document.querySelector('.next');
+
+const allItems = document.querySelectorAll('.item');
+
+let indiceDellitemConClasseActive = 0;
+
+
+
+
+nextButton.addEventListener('click', function(){
+    allItems[indiceDellitemConClasseActive].classList.remove('active');
+
+    if(indiceDellitemConClasseActive < (allItems.length -1)) {
+        indiceDellitemConClasseActive++;
+    }
+    else if (indiceDellitemConClasseActive == (allItems.length - 1 ) ){
+        indiceDellitemConClasseActive = 0;
+    }
+
+    allItems[indiceDellitemConClasseActive].classList.add('active');
+})
+
+
+prevButton.addEventListener('click', function(){
+    allItems[indiceDellitemConClasseActive].classList.remove('active');
+
+    if(indiceDellitemConClasseActive > 0) {
+        indiceDellitemConClasseActive--;
+    }
+    else if (indiceDellitemConClasseActive == 0 ){
+        indiceDellitemConClasseActive = (allItems.length - 1) ;
+    }
+
+    allItems[indiceDellitemConClasseActive].classList.add('active');
+})
+
+
+
+
+setInterval( function(){
+    allItems[indiceDellitemConClasseActive].classList.remove('active');
+
+    if(indiceDellitemConClasseActive < (allItems.length -1)) {
+        indiceDellitemConClasseActive++;
+    }
+    else if (indiceDellitemConClasseActive == (allItems.length - 1 ) ){
+        indiceDellitemConClasseActive = 0;
+    }
+
+    allItems[indiceDellitemConClasseActive].classList.add('active');
+},3000)
